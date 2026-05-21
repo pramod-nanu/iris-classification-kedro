@@ -1,101 +1,244 @@
-# iris-classification
+# Iris Classification using Kedro
 
-[![Powered by Kedro](https://img.shields.io/badge/powered_by-kedro-ffc900?logo=kedro)](https://kedro.org)
+An end-to-end Machine Learning pipeline project built using Kedro orchestration framework and Scikit-learn for Iris flower classification.
 
-## Overview
+---
 
-This is your new Kedro project, which was generated using `kedro 1.0.0`.
+# 🚀 Project Overview
 
-Take a look at the [Kedro documentation](https://docs.kedro.org) to get started.
+This project demonstrates how to build a modular and production-style ML pipeline using Kedro.
 
-## Rules and guidelines
+The pipeline performs:
 
-In order to get the best out of the template:
+- Data Loading
+- Train/Test Splitting
+- Model Training
+- Model Evaluation
+- Pipeline Visualization using Kedro Viz
 
-* Don't remove any lines from the `.gitignore` file we provide
-* Make sure your results can be reproduced by following a data engineering convention
-* Don't commit data to your repository
-* Don't commit any credentials or your local configuration to your repository. Keep all your credentials and local configuration in `conf/local/`
+---
 
-## How to install dependencies
+# 🛠️ Tech Stack
 
-Declare any dependencies in `requirements.txt` for `pip` installation.
+- Python
+- Kedro
+- Scikit-learn
+- Pandas
+- Jupyter Notebook
+- Kedro Viz
 
-To install them, run:
+---
 
+# 📂 Project Structure
+
+```bash
+iris-classification-kedro/
+│
+├── conf/                       # Configuration files
+├── data/                       # Data storage
+│   ├── 01_raw/
+│   ├── 02_intermediate/
+│   ├── 06_models/
+│   └── 08_reporting/
+│
+├── notebooks/                  # Jupyter notebooks
+│
+├── src/iris_classification/
+│   ├── pipelines/
+│   │   └── data_processing/
+│   │       ├── nodes.py
+│   │       └── pipeline.py
+│   │
+│   ├── pipeline_registry.py
+│   └── settings.py
+│
+├── tests/
+├── requirements.txt
+└── README.md
 ```
-pip install -r requirements.txt
+
+---
+
+# ⚙️ Pipeline Flow
+
+```text
+Load Iris Dataset
+        ↓
+Split Train/Test Data
+        ↓
+Train Logistic Regression Model
+        ↓
+Evaluate Model Accuracy
+        ↓
+Save Model & Metrics
 ```
 
-## How to run your Kedro pipeline
+---
 
-You can run your Kedro project with:
+# 🔥 Kedro Pipeline Architecture
 
-```
+```text
+Notebook
+   ↓
+nodes.py
+   ↓
+pipeline.py
+   ↓
+pipeline_registry.py
+   ↓
+catalog.yml
+   ↓
 kedro run
 ```
 
-## How to test your Kedro project
+---
 
-Have a look at the file `tests/test_run.py` for instructions on how to write your tests. You can run your tests as follows:
+# 📊 Model Used
 
-```
-pytest
-```
+- Logistic Regression
 
-You can configure the coverage threshold in your project's `pyproject.toml` file under the `[tool.coverage.report]` section.
+---
 
+# 📈 Evaluation Metric
 
-## Project dependencies
+- Accuracy Score
 
-To see and update the dependency requirements for your project use `requirements.txt`. You can install the project requirements with `pip install -r requirements.txt`.
+---
 
-[Further information about project dependencies](https://docs.kedro.org/en/stable/kedro_project_setup/dependencies.html#project-specific-dependencies)
+# 🚀 How to Run Project
 
-## How to work with Kedro and notebooks
+## 1️⃣ Clone Repository
 
-> Note: Using `kedro jupyter` or `kedro ipython` to run your notebook provides these variables in scope: `context`, 'session', `catalog`, and `pipelines`.
->
-> Jupyter, JupyterLab, and IPython are already included in the project requirements by default, so once you have run `pip install -r requirements.txt` you will not need to take any extra steps before you use them.
-
-### Jupyter
-To use Jupyter notebooks in your Kedro project, you need to install Jupyter:
-
-```
-pip install jupyter
+```bash
+git clone https://github.com/YOUR_USERNAME/iris-classification-kedro.git
 ```
 
-After installing Jupyter, you can start a local notebook server:
+---
 
-```
-kedro jupyter notebook
-```
+## 2️⃣ Navigate to Project
 
-### JupyterLab
-To use JupyterLab, you need to install it:
-
-```
-pip install jupyterlab
+```bash
+cd iris-classification-kedro
 ```
 
-You can also start JupyterLab:
+---
 
-```
-kedro jupyter lab
-```
+## 3️⃣ Create Virtual Environment
 
-### IPython
-And if you want to run an IPython session:
-
-```
-kedro ipython
+```bash
+python -m venv venv
 ```
 
-### How to ignore notebook output cells in `git`
-To automatically strip out all output cell contents before committing to `git`, you can use tools like [`nbstripout`](https://github.com/kynan/nbstripout). For example, you can add a hook in `.git/config` with `nbstripout --install`. This will run `nbstripout` before anything is committed to `git`.
+---
 
-> *Note:* Your output cells will be retained locally.
+## 4️⃣ Activate Virtual Environment
 
-## Package your Kedro project
+### Mac/Linux
 
-[Further information about building project documentation and packaging your project](https://docs.kedro.org/en/stable/tutorial/package_a_project.html)
+```bash
+source venv/bin/activate
+```
+
+### Windows
+
+```bash
+venv\Scripts\activate
+```
+
+---
+
+## 5️⃣ Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 6️⃣ Run Kedro Pipeline
+
+```bash
+kedro run
+```
+
+---
+
+## 7️⃣ Run Kedro Viz
+
+```bash
+kedro viz
+```
+
+Open browser:
+
+```text
+http://127.0.0.1:4141
+```
+
+---
+
+# 📂 Output Artifacts
+
+## Processed Data
+
+```text
+data/02_intermediate/
+```
+
+- X_train.csv
+- X_test.csv
+- y_train.csv
+- y_test.csv
+
+---
+
+## Trained Model
+
+```text
+data/06_models/trained_model.pkl
+```
+
+---
+
+## Evaluation Metrics
+
+```text
+data/08_reporting/model_metrics.json
+```
+
+---
+
+# 🧠 Key Learnings
+
+This project helped in understanding:
+
+- Kedro orchestration
+- Modular ML pipelines
+- Dataset catalog management
+- Node-based workflow design
+- Model persistence
+- Pipeline visualization
+- Production-style ML engineering
+
+---
+
+# 🎯 Future Improvements
+
+- Add Hyperparameter Tuning
+- Add MLflow Integration
+- Add Docker Support
+- Add FastAPI Deployment
+- Add CI/CD Pipeline
+- Add Airflow Scheduling
+
+---
+
+# 👨‍💻 Author
+
+Pramod Gaikwad
+
+---
+
+# ⭐ If you like this project
+
+Give this repository a star ⭐
