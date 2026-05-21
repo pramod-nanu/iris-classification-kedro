@@ -1,0 +1,31 @@
+# Here you can define all your datasets by using simple YAML syntax.
+#
+# Documentation for this file format can be found in "The Data Catalog"
+# Link: https://docs.kedro.org/en/stable/data/data_catalog.html
+iris_data:
+  type: pandas.CSVDataset
+  filepath: data/01_raw/iris.csv
+
+X_train:
+  type: pandas.CSVDataset
+  filepath : data/02_intermediate/X_train.csv
+
+X_test:
+  type : pandas.CSVDataset
+  filepath : data/02_intermediate/X_test.csv
+
+y_train:
+  type: pandas.CSVDataset
+  filepath: data/02_intermediate/y_train.csv
+
+y_test:
+  type: pandas.CSVDataset
+  filepath: data/02_intermediate/y_test.csv
+
+trained_model:
+  type: pickle.PickleDataset
+  filepath: data/06_models/trained_model.pkl
+
+model_metrics:
+  type: json.JSONDataset
+  filepath: data/08_models/model_metrics.json
